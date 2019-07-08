@@ -1,0 +1,43 @@
+def string_sherlock(s):
+    dic={}
+    for i in s:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+    a=dic[s[0]]
+    print(dic)
+    permission=True
+    count=0
+    b=0
+    while (b<2):
+        for i in dic:
+            if(a==dic[i]):
+                a=dic[i]
+                count+=1
+            if(a>dic[i] and permission):
+                a-=1
+                count=0
+                i=s[0]
+                permission=False
+                b+=1
+                break
+            if(a<dic[i] and permission):
+                dic[i]-=1
+                count=0
+                i=s[0]
+                permission=False
+                b+=1
+                break
+            if (count == len(dic)):
+                b+=2
+                break
+    print(len(dic))
+    if(count==len(dic)):
+        print('Yes')
+    else:
+        print('No')
+
+
+s='anirudhsingla'
+string_sherlock(s)
