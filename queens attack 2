@@ -12,10 +12,10 @@ position_queen_column=4
 size_of_board=8
 row=size_of_board
 column=size_of_board
-obstacle_up=
-obstacle_down=
-obstacle_left=
-obstacle_right=
+obstacle_up=size_of_board
+obstacle_down=size_of_board
+obstacle_left=size_of_board
+obstacle_right=size_of_board
 obstacle_up_right_row=row
 obstacle_up_right_column=column
 obstacle_up_left_row=row
@@ -24,5 +24,29 @@ obstacle_down_right_row=row
 obstacle_down_right_column=column
 obstacle_down_left_row=row
 obstacle_down_left_column=column
-  
-        
+obstacles=[]
+for i in obstacles:
+    if(i[1]==position_queen_column):
+        if(i[0]>position_queen_row):
+            obstacle_up=i[0]
+        if(i[0]<position_queen_row):
+            obstacle_down=i[0]
+    if(i[0]==position_queen_row):
+        if(i[1]>position_queen_column):
+            obstacle_right=i[1]
+        if(i[1]<position_queen_column):
+            obstacle_left=i[1]
+    if(i[1]>position_queen_column):
+        if(i[0]>position_queen_row):
+            obstacle_up_right_row=i[0]
+            obstacle_up_right_column=i[1]
+        if(i[0]<position_queen_row):
+            obstacle_down_right_row=i[0]
+            obstacle_down_right_column=i[1]
+    if(i[1]<position_queen_column):
+        if(i[0]>position_queen_row):
+            obstacle_up_left_row=i[0]
+            obstacle_up_left_column=i[1]
+        if(i[0]<position_queen_row):
+            obstacle_down_left_row=i[0]
+            obstacle_down_left_column=i[1]        
