@@ -1,0 +1,28 @@
+def up():
+def down():
+def right():
+def left():
+def up_right():
+def up_left():
+def down_right():
+def down_left():
+
+position_queen_row=4
+position_queen_column=4
+size_of_board=8
+row=size_of_board
+column=size_of_board
+obstacle_up=
+obstacle_down=
+obstacle_left=
+obstacle_right=
+obstacle_up_right_row=row
+obstacle_up_right_column=column
+obstacle_up_left_row=row
+obstacle_up_left_column=column
+obstacle_down_right_row=row
+obstacle_down_right_column=column
+obstacle_down_left_row=row
+obstacle_down_left_column=column
+  
+        
