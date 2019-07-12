@@ -1,0 +1,40 @@
+def up(pos,obstacle):
+    return (obstacle-pos-1)
+def down(pos,obstacle):
+    return (pos-obstacle-1)
+def right(pos,obstacle):
+    return (obstacle-pos-1)
+def left(pos,obstacle):
+    return (pos-obstacle-1)
+def up_right(obstacle_row,obstacle_column,pos_row,pos_col):
+    i,j=pos_row,pos_col
+    c=0
+    while(i<obstacle_row and j<obstacle_column):
+        i+=1
+        j+=1
+        c+=1
+    return c-1
+def up_left(obstacle_row,obstacle_column,pos_row,pos_col):
+    i,j=pos_row,pos_col
+    c=0
+    while(i<obstacle_row and j>obstacle_column):
+        i+=1
+        j-=1
+        c+=1
+    return c-1
+def down_right(obstacle_row,obstacle_column,pos_row,pos_col):
+    i, j = pos_row, pos_col
+    c=0
+    while(i>obstacle_row and j<obstacle_column):
+        i-=1
+        j+=1
+        c+=1
+    return c-1
+def down_left(obstacle_row,obstacle_column,pos_row,pos_col):
+    i, j = pos_row, pos_col
+    c=0
+    while(i>obstacle_row and j>obstacle_column):
+        i-=1
+        j-=1
+        c+=1
+    return c-1
