@@ -1,0 +1,48 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the surfaceArea function below.
+def surfaceArea(A):
+    top_bottom=2*W*H
+    total_area=0
+    area=0
+    
+    for i in range(0,H):
+        area+=A[i][0]
+        area+=A[i][W-1]
+    for i in range(0,W):
+        area+=A[0][i]
+        area+=A[H-1][i]    
+    for i in range(0,W):
+        for j in range(1,H):
+            area+=abs(A[j][i]-A[j-1][i])    
+    for i in range(0,H):
+        for j in range(1,W):
+            area+=abs(A[i][j]-A[i][j-1])
+    total_area=area+top_bottom
+    return (total_area)        
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    HW = input().split()
+
+    H = int(HW[0])
+
+    W = int(HW[1])
+
+    A = []
+
+    for _ in range(H):
+        A.append(list(map(int, input().rstrip().split())))
+
+    result = surfaceArea(A)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
