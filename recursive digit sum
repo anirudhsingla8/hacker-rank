@@ -1,0 +1,40 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the superDigit function below.
+def sum_digit(s):
+    summ=0
+    for i in range(len(s)):
+        summ=summ+int(s[i])
+    return summ
+
+def superDigit(n, k):
+    while(len(n)!=1):
+        n=str(sum_digit(n))
+    n=int(n)
+    n=n*k
+    n=str(n)
+    while(len(n)!=1):
+        n=str(sum_digit(n))
+    return n        
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = nk[0]
+
+    k = int(nk[1])
+
+    result = superDigit(n, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
