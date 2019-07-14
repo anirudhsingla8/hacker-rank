@@ -1,0 +1,50 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the acmTeam function below.
+def acmTeam(topic):
+
+    def rfunc(a,b,m):
+        count=0
+        for i in range(m):
+            if(a[i]=='1' or b[i]=='1'):
+                count+=1
+
+        return count        
+    maxx=0
+    count=0
+    list1=list()
+    for i in range(len(topic)-1):
+        for j in range(i+1,len(topic)):
+            r=rfunc(topic[i],topic[j],m)
+            list1.append(r)
+    maxx=max(list1)
+    count=list1.count(maxx)
+    return (maxx,count)                   
+            
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nm = raw_input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    topic = []
+
+    for _ in xrange(n):
+        topic_item = raw_input()
+        topic.append(topic_item)
+
+    result = acmTeam(topic)
+
+    fptr.write('\n'.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
