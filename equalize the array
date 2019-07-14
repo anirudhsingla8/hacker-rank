@@ -1,0 +1,35 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the equalizeArray function below.
+def equalizeArray(arr):
+    arr1=list()
+    arrcount=list()
+    
+    for i in arr:
+        if(i not in arr1):
+            arr1.append(i)
+    for i in arr1:
+        arrcount.append(arr.count(i))
+    total=sum(arrcount)    
+   # to get min no of deletions we are subtracting sum from count of element repeating maximum no of times 
+    return(total-max(arrcount))
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(raw_input())
+
+    arr = map(int, raw_input().rstrip().split())
+
+    result = equalizeArray(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
