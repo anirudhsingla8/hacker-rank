@@ -1,0 +1,50 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the appendAndDelete function below.
+def appendAndDelete(s, t, k):
+    lens=len(s)
+    lent=len(t)
+    common=0
+    if(s==t and k%2==0):
+        return"Yes"
+    if(lens<lent):
+        for i in range(0,lens):
+            if(s[i]==t[i]):
+                common+=1
+            else:
+                break
+    if(lent<lens):
+        for i in range(0,lent):
+            if(s[i]==t[i]):
+                common+=1
+            else:
+                break     
+    if((lens+lent-(2*common))>k):
+        return"No"
+    if((lent+lens)<k):
+        return"Yes"
+    if((lens+lent-(2*common))%2==k%2):
+        return"Yes"
+    else:
+        return"No"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    t = input()
+
+    k = int(input())
+
+    result = appendAndDelete(s, t, k)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
