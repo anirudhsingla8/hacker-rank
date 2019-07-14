@@ -1,0 +1,56 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the isValid function below.
+def isValid(s):
+    dic={}
+    lis=[]
+    lis_unique=[]
+    for i in s:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+    print(dic)
+    for i in dic:
+        lis.append(dic[i])
+    for i in lis:
+        if i not in lis_unique:
+            lis_unique.append(i)
+    lis_unique=sorted(lis_unique)
+    if len(lis_unique)>2:
+        return'NO'
+    if len(lis_unique)==1:
+        return 'YES'
+    if len(lis_unique)==2:
+        a=lis_unique[0]
+        b=lis_unique[1]
+        if(lis_unique[0]==1 ):
+            if(lis.count(1)==1):
+                return'YES'
+            else:
+                return'NO'
+        if(lis_unique[1]-lis_unique[0]>1):
+            return 'NO'
+        if(lis.count(lis_unique[1]-1)==1):
+            return 'YES'
+        if(lis_unique[1]-1==lis_unique[0]):
+            if(lis.count(lis_unique[1])==1):
+                return 'YES'
+            else:
+                return'NO'    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = raw_input()
+
+    result = isValid(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
