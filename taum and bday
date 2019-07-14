@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the taumBday function below.
+def taumBday(b, w, bc, wc, z):
+   # print(b,w)
+    s1 = (b*bc) + (w*wc)
+    s2 = (b*(wc+z)) + (w*wc)
+    s3 = (b*bc) + (w*(bc+z))
+    #return min(s1,s2,s3)
+    if (s1<=s2 and s1<=s3):
+        return s1
+    if (s2<=s1 and s2<=s3):
+        return s2
+    if (s3<=s1 and s3<=s2):
+        return s3        
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        bw = input().split()
+
+        b = int(bw[0])
+
+        w = int(bw[1])
+
+        bcWcz = input().split()
+
+        bc = int(bcWcz[0])
+
+        wc = int(bcWcz[1])
+
+        z = int(bcWcz[2])
+
+        result = taumBday(b, w, bc, wc, z)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
