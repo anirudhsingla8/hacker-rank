@@ -1,0 +1,61 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the timeInWords function below.
+def timeInWords(h, m):
+    dic_lower={1:'one',2:'two',3:'three',4:'four',5:'five',6:'six',7:'seven',8:'eighteen',9:'nine',10:'ten',11:'eleven',12:'twelve',13:'thirteen'}
+    dic_upper={2:'twenty',3:'thirty',4:'forty',5:'fifty'}
+    if(m==00):
+        return (dic_lower[h]+" o' clock")
+    if(m==30):
+        return ('half past '+dic_lower[h])
+    if(m==15):
+        return ('quarter past '+dic_lower[h])
+    if(m==45):
+        if(h<=11):
+            return ('quarter to '+dic_lower[h+1])
+        else:
+            return ('quarter to one')
+    if(m>00 and m<30):
+        if(m<=1):
+            return (dic_lower[m] + ' minute past ' + dic_lower[h])
+        if(m>1 and m<=13):
+            return (dic_lower[m]+' minutes past '+dic_lower[h])
+        if(m>13 and m<=19):
+            return ( dic_lower[int(str(m)[1])]+'teen minutes past '+dic_lower[h])
+        if(m==20):
+            return (dic_upper[int(str(m[0]))] + ' minutes past ' + dic_lower[h])
+        if(m>20):
+            return (dic_upper[int(str(m)[0])]+' '+dic_lower[int(str(m)[1])]+ ' minutes past ' + dic_lower[h])
+    if(m>30 and m<60):
+        m=60-m
+        if(m<=1):
+            return (dic_lower[m] + ' minute to ' + dic_lower[h + 1])
+        if (m>1 and m <= 13):
+            return (dic_lower[m] + ' minutes to ' + dic_lower[h+1])
+        if (m > 13 and m <= 19):
+            return (dic_lower[int(str(m)[1])] + 'teen minutes to ' + dic_lower[h+1])
+        if (m == 20):
+            return (dic_upper[int(str(m[0]))] + ' minutes to ' + dic_lower[h+1])
+        if (m > 20):
+            return (dic_upper[int(str(m)[0])]+' '+dic_lower[int(str(m)[1])] + ' minutes to ' + dic_lower[h+1])
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    h = int(raw_input())
+
+    m = int(raw_input())
+
+    result = timeInWords(h, m)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
