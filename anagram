@@ -1,0 +1,40 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the anagram function below.
+def anagram(s):
+    if((len(s)%2)!=0):
+        return (-1)
+    count=0
+    str1 = list()
+    str2 = list()
+    for i in range(0,len(s)):
+        if(i<(len(s)//2)):
+            str1.append(s[i])
+        else:
+            str2.append(s[i])
+    for i in str1:
+        if i in str2:
+            str2.remove(i)
+            count+=1
+    return((len(s)//2)-(count))
+    
+        
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(raw_input())
+
+    for q_itr in xrange(q):
+        s = raw_input()
+
+        result = anagram(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
