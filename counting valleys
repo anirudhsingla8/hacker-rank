@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the countingValleys function below.
+def countingValleys(n, s):
+    level=0
+    valley_started=False
+    valley=0
+    for i in range(0,n):
+        if(s[i]=='D' and level==0):
+            valley_started=True        
+        if(s[i]=='D'):
+            level-=1
+        else:
+            level+=1 
+        if(level==0 and valley_started==True):
+            valley_started=False
+            valley+=1       
+    return valley
+    
+    
+    
+    
+    return valley        
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    s = input()
+
+    result = countingValleys(n, s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
