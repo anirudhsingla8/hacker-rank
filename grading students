@@ -1,0 +1,45 @@
+#!/bin/python3
+
+import os
+import sys
+
+#
+# Complete the gradingStudents function below.
+#
+def gradingStudents(grades):
+    lis=[]
+    for i in grades:
+        last=i%10
+        if(i<38):
+            lis.append(i)
+        elif(i>=38):
+            if(i%5 == 0):
+                lis.append(i)
+            elif(last>7 and last<=9):
+                no= i+(10-last)
+                lis.append(no)    
+            elif(last>2 and last<5):
+                no= i+(10-last-5)
+                lis.append(no)    
+            else:
+                lis.append(i)
+    return lis
+
+
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    grades = []
+
+    for _ in range(n):
+        grades_item = int(input())
+        grades.append(grades_item)
+
+    result = gradingStudents(grades)
+
+    f.write('\n'.join(map(str, result)))
+    f.write('\n')
+
+    f.close()
