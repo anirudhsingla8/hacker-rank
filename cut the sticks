@@ -1,0 +1,52 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the cutTheSticks function below.
+def cutTheSticks(arr):
+    uarr=list(set(arr))
+    uarr.sort()
+    uarr1=uarr
+    ar=arr
+    ar.sort()
+    ls=[]
+    ls.append(len(ar))
+    count=0
+    small=uarr[0]
+    for i in range(0,len(uarr)):
+        for j in range(0,len(ar)):
+            ar[j]=ar[j]-small
+            if(ar[j]>0):
+                count+=1
+        for j in range(0,len(uarr1)):
+            uarr1[j]=uarr1[j]-small               
+        ls.append(count)
+        count = 0
+        if(len(uarr1)!=1):
+            uarr1.remove(0)
+        small = uarr1[0]
+    lsrange=len(ls)-1
+    ls1=[]
+    for i in range(0,lsrange):
+        ls1.append(ls[i])
+    return(ls1)
+
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(raw_input())
+
+    arr = map(int, raw_input().rstrip().split())
+
+    result = cutTheSticks(arr)
+
+    fptr.write('\n'.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
