@@ -1,0 +1,34 @@
+#!/bin/python
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the missingNumbers function below.
+def missingNumbers(arr, brr):
+    for i in arr:
+        if i in brr:
+            brr.remove(i)
+    brr1=list(set(brr))
+    brr1.sort()
+    return(brr1)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(raw_input())
+
+    arr = map(int, raw_input().rstrip().split())
+
+    m = int(raw_input())
+
+    brr = map(int, raw_input().rstrip().split())
+
+    result = missingNumbers(arr, brr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
