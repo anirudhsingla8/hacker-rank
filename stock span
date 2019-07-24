@@ -1,0 +1,16 @@
+stock=[10, 4, 5, 90, 120, 80]
+stock_rev=stock[::-1]
+span=[]
+for j in range(0,len(stock)):
+    a=stock_rev[j]
+    i=j+1
+    b=0
+    while(i<len(stock)):
+        if(a>=stock_rev[i]):
+            b+=1
+        else:
+            break
+        i+=1
+        continue
+    span.append(b+1)
+print(span)
